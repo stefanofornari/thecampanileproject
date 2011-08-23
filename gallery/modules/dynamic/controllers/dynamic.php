@@ -18,15 +18,53 @@
  */
 class Dynamic_Controller extends Controller {
   public function updates() {
-    print $this->_show("updates", t("Recent changes"));
+    print $this->_show("updates");
   }
 
   public function popular() {
-    print $this->_show("popular", t("Most viewed"));
+    print $this->_show("popular");
   }
   
   public function random() {
-    print $this->_show("random", t("Random pictures"));
+    print $this->_show_random();
+  }
+  
+  public function _show_random() {
+    $page_size = module::get_var("gallery", "page_size", 9);
+    $page = Input::instance()->get("page", "1");
+    
+    $items = array();
+    $children = array();
+    $i = 0;
+    
+    $children_count = ORM::factory("item")
+                    ->viewable()
+                    ->where("type", "!=", "album")
+                    ->count_all();
+    
+    $limit = min($children_count, $page_size);
+    
+    while ($i < $limit) {
+      $items = item::random_query()->where("type", "!=", "album")->find_all(9, 0);
+      foreach ($items as $item) {
+        $children[$i] = $item;
+        ++$i;
+        if ($i >= $limit) {
+            break;
+        }
+      }
+    }
+    
+    $template = new Theme_View("page.html", "collection", "dynamic");
+    $template->set_global("page", $page);
+    $template->set_global("page_size", $page_size);
+    $template->set_global("max_pages", 1);
+    $template->set_global("children", $children);
+    $template->set_global("children_count", $children_count);
+    $template->content = new View("dynamic.html");
+    $template->content->title = t($album_defn->title);
+
+    print $template;
   }
 
   private function _show($album) {
@@ -35,10 +73,11 @@ class Dynamic_Controller extends Controller {
 
     $album_defn = unserialize(module::get_var("dynamic", $album));
     $display_limit = $album_defn->limit;
+    
     $children_count = ORM::factory("item")
-      ->viewable()
-      ->where("type", "!=", "album")
-      ->count_all();
+                    ->viewable()
+                    ->where("type", "!=", "album")
+                    ->count_all();
     if (!empty($display_limit)) {
       $children_count = min($children_count, $display_limit);
     }
@@ -53,29 +92,16 @@ class Dynamic_Controller extends Controller {
     
     $image_count = module::get_var("image_block", "image_count");
     
-    $children = array();
-    if ($album == "random") {
-       $children = item::random_query()->where("type", "!=", "album")->find_all($page_size, $offset);
-    } else {
-       $children = ORM::factory("item")
-                      ->viewable()
-                      ->where("type", "!=", "album")
-                      ->order_by($album_defn->key_field, "DESC")
-                      ->find_all($page_size, $offset);
-    }
+    $children = ORM::factory("item")
+                   ->viewable()
+                   ->where("type", "!=", "album")
+                   ->order_by($album_defn->key_field, "DESC")
+                   ->find_all($page_size, $offset);
 
     $template = new Theme_View("page.html", "collection", "dynamic");
     $template->set_global("page", $page);
     $template->set_global("page_size", $page_size);
     $template->set_global("max_pages", $max_pages);
-    /**
-    $template->set_global("children", ORM::factory("item")
-                          ->viewable()
-                          ->where("type", "!=", "album")
-                          ->order_by($album_defn->key_field, "DESC")
-                          ->find_all($page_size, $offset));
-     * 
-     */
     $template->set_global("children", $children);
     $template->set_global("children_count", $children_count);
     $template->content = new View("dynamic.html");
