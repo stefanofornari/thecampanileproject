@@ -273,6 +273,7 @@ defined("SYSPATH") or die("No direct script access.");
                     <span id="g-footer-text"><?= $theme->bb2html($footer_text, 1) ?></span>
                 <? endif ?>
                 <ul id="g-footer-rightside"><li id="g-copyright"><?= $theme->copyright ?></li></ul>
+                <br/>
             <?= $theme->credits() ?>
                 
     <? if ($theme->loginmenu_position == "default"): ?>
