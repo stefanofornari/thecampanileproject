@@ -51,8 +51,8 @@ h5 { font-weight: bold; }
 
 /* base.css - Header ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-#g-header { height: 90px; padding: 0; font-size: 0.9em; }
-#g-logo img { top: 4px; left: 4px; font-size: 0.8em; }
+#g-header { height: 80px; padding: 0; font-size: 0.9em; }
+#g-logo { top: 4px; left: 4px; height: 80px; font-size: 0.8em; margin-top: 6px; margin-left: 6px; }
 #g-logo .txt {
     vertical-align: top; 
     font: bold 2.0em Arial, Helvetica, Verdana, Sans-Serif; padding-left: 4px;
@@ -89,6 +89,7 @@ h5 { font-weight: bold; }
 #g-footer { padding: 6px 6px 6px 14px; zoom: 1; font-size: 0.9em; }
 #g-footer ul { float: left; padding: 0; text-align: left; }
 #g-footer li { padding: 0 0 2px 0; }
+#g-footer-text { float: left; text-align: left; }
 #g-footer-text .txt { font-size: x-small; vertical-align: top; padding-left: 2px; }
 #g-footer #g-login-menu { position: absolute; bottom: 0.5em; right: 1em; background-color: transparent; display: none; }
 #g-footer #g-footer-rightside { float: right; padding-right: 6px; text-align: right; }

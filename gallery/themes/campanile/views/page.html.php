@@ -156,7 +156,7 @@ defined("SYSPATH") or die("No direct script access.");
                     <span id="g-header-text"><?= $theme->bb2html($header_text, 1) ?></span>
                 <? else: ?>
                     <a id="g-logo" href="<?= item::root()->url() ?><?= ($theme->allow_root_page) ? "?root=yes" : null; ?>" title="<?= t("go back to the Gallery home")->for_html_attr() ?>">
-                        <img alt="<?= t("Gallery logo: Your photos on your web site")->for_html_attr() ?>" src="<?= $theme->logopath ?>" />
+                        <img alt="<?= t("Campanile")->for_html_attr() ?>" src="<?= $theme->logopath ?>" />
                     </a>
                     <? endif; ?>
                 <? endif; ?>
