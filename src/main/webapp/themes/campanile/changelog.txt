@@ -1,0 +1,514 @@
+=== Grey Dragon Theme ===
+Grey Dragon Theme - a custom theme for Gallery 3
+
+This theme was designed and built by Serguei Dosyukov, whose blog you will find
+at http://blog.dragonsoft.us/
+Copyright (C) 2009-2010 Serguei Dosyukov
+
+Tested up to: G3 3.0.2 - v.49
+Minimum requirement: G3 3.0.1 - v.46
+
+This program is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 2 of the License, or (at your option) any later
+version. This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+details. You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street Fifth Floor, Boston, MA  02110-1301, USA.
+
+=== Open issues ===
+- RTL layout support
+                            
+=== Changelog ===
+version 3.0.8
+- Fixed issue with allowed sidebar position not properly recognized when used as Default 
+- Fix issue with missing quotes in Admin module
+- Fixed issue with uninitialized variable in admin page
+- Fixed background for view-calendar.png for some color packs
+- CSS: Center content of ThumbNav module. If non default thumb size is used for module, setting may need to be adjusted.
+- CSS: Added new style sheet for iPad support
+
+version 3.0.7
+- ADMIN: Added support for View Mode - Full/Mini (ex: ?viewmode=mini | ?viewmode=full | ?viewmode=default )
+- ADMIN: Paginator position now can be set independently for Album and Photo pages
+- ADMIN: Added Colorbox slideshow detection
+- Theme.info adjusted to match new guidelines
+- CSS: GreyDragon Color Pack - fixed thumb background color issue with GreyDragon Frame Pack
+- CSS: changes to improve Basket Module integration
+- CSS: #g-album-grid element now references framepack used for better interaction between frame and color packs (ex: class="g-slateblue")
+- Fix issue with sidebar not properly displayed in Root Page
+- Fix issue with missing thumb image not being aligned properly in "Actual Aspect Ratio" mode
+
+version 3.0.6
+- Fix: Using Top aligned sidebar causes problem
+
+version 3.0.5
+- ADMIN: Allow hiding sidebar for root pages -> Advanced Options\Root Page\Hide Sidebar
+- ADMIN: Allow breadcrumbs in root page/root album -> Advanced Options\General\Show Breadcrumbs in top album/root page
+- Fixed issue with Calendar not displayed properly when no items are returned
+- CSS: Increased padding for in-page description block
+
+version 3.0.4
+- FP: New framepack - book
+  Please note that if bottom aligned description is used, it need to be the same for both album and photo thumbs.
+- CSS: #g-album-grid-container renamed to .g-album-grid-container
+- CSS: Fixed slight misalignment of 3 level main menu items
+- ADMIN: New position for main menu - Top Bar - top aligned/fixed positioned menu. Useful for admin mode menu
+- ADMIN: Added support for separate option for description position in album thumbs
+
+version 3.0.3
+- ADMIN: Added option for Root Page slideshow delay
+- ADMIN: Added option for Alternative Description for Root Page which overwrites Description from Root album
+- CSS: Fix issue with context menu hotspot z-index in thumbs
+- CSS: Fixed margin in Uploadify dialog to prevent overlap
+- ADMIN: Page cache option has been deprecated. It can be achieved via .htaccess instead
+
+version 3.0.2
+- Wind Color Pack: Fixed issue with missing background image for dialog header
+- CSS: Wind Color Pack: Set dialog background to white
+- ADMIN: Fixed issue of Maintenance group label not being translated
+- Fixed issue with float division for photo page
+- Fixed issue with BBCode in info block not being converted (regression error)
+- Fixed small misalignment of the image with the "Actual" Aspect Ratio Thumb
+- Added CSS class marker for portrait thumb images
+- IE9: Added support for Pinned Site mode and Jump List menu
+
+version 3.0.1
+- ADMIN: Page Header and Footer Text allows BBCode
+- ADMIN: Added support for apple-touch-icon - icon similar to favicon to be used on iPad/iPhone/iPod devices
+- ADMIN: New option - Album Description Display Mode - allowing placement of the description in the album pages
+- ADMIN: Main menu could be now positioned as Top-Left/Bottom-Left aligned
+- ADMIN: Bradcrumbs could be now positioned as Top-Left/Bottom-Left/Bottom-Right or Hidden
+- Added <span> wrappers for Header and Footer texts allowing further CSS manipulation
+- Added support for custom header/footer inclusion - simply drop header.html.php and/or footer.html.php in the views folder and content would be added in the header/footer section
+- Info sidebar block logic synchronized to match default but still allow BBCode
+
+version 3.0.0
+- Due to extensive changes to CSS it is now a major release
+- Rules from screen.css moved into base.css. Screen.css used as loader file only.
+- Introduced better support for RTL
+- Some of the icons moved into ui-icons.png for optimization. Color adjustments for visibility.
+- Added support for frame packs. Included: greydragon (default), simple, android, iphone, iphoto, darkglass
+- Fixed issue with regular wide thumb format not being set/displayed properly
+- Breadcrumb logic extended to take in consideration [visible_title_length] variable value introduced in G3
+- Reordered JS registration to comply with default G3 3.0.1 logic
+- Added some missing translation hooks in Admin area
+- Some Page load optimization
+- Added logic to take in consideration date display format for info module
+- Performed validation and necessary adjustments for IE 9/IE 9 compatibility mode
+- IE Fix CSS is only applied for IE 6. Older versions are no longer supported
+
+version 2.7.9
+- Optimized session handling for colorpack cmd param
+- Removed validation for colorpack presence
+
+version 2.7.8
+- Fixed issue with colorpack detection. Reenabled
+- Fixed issue with sidebar position could be "stuck" when switching from Grey Dragon Wind Theme
+- Fixed introduced error with missing forms.css reference
+- Theme's CSS/JS is combined into session based G3 files
+
+version 2.7.7
+- Adjusted for 3.0.1 release of G3
+- New color pack: blackhawk
+- ADMIN: New sidebar position supported - top (new rules added to colorpacks)
+- CSS: Some clean up for included colorpacks - CSS/image resources, sprite image optimization for sidebar position buttons
+- Added session persistence for colorpack url parameter for demo purposes
+- ADMIN: Prerequisites module check extended to make it more relevant when Root Page is allowed
+- CSS: Sync positions of main menu and breadcrumbs when in alternative header layout format
+- colorpack location validation has been disabled for now until issue is resolved
+
+version 2.7.6
+- ADMIN: "Large" Thumb sizes are removed from Aspect dropdown and managed via "Expanded Aspect Ratio (300px wide)" option
+- ADMIN: New Thumb aspect ratio - Wide/HDTV (16:9), "Actual" aspect is supported in Expanded mode
+- ADMIN: Root Page - new option "Show Gallery Description"
+- Added check if Shadowbox is loaded so that theme's initialization JS does not produce hidden exception
+- Added pointer cursor for clickable overlay area in Root Page until Minislideshow is loaded
+
+version 2.7.5
+- ADMIN: Full Slideshow RSS feed url now being used. This solves some issues with Flash loader and allows creation of custom playlists to be used in the root page
+- Root Page: Fixed issue with Flash Slideshow not being loaded properly
+
+version 2.7.4
+- Root Page: Added "Click to Enter" to indicate clickable state
+- Root Page: Quote is now taken from root album description field. If description is empty, slideshow content is centered.
+- Added branding icons for "gallery 3" and theme/color packs.
+- Fixed issue with page layout for calendar module.
+- Fixed issue with URL parameters not being recognized in some server configurations
+- CSS: Fixed aspect ratio for thumbs. Some css alignments optimization
+- CSS: Turned back on borders for blocks in bottom aligned sidebar
+- ADMIN: New option for Photo Description Display Mode - Overlay Bottom. !!!! Color pack's CSS rules affected.
+- ADMIN: Maintenance section: Added "Reset IPIC Info" (if module is active) and "Purge cache data", some tweaks for "Reset EXIF Info"
+
+version 2.7.3
+- ADMIN: New option - Randomize Thumb Image
+- Missing markup in rootpage.html.php
+- Root Page - set size of the slideshow to auto so it can be managed via CSS
+- Sync page.html.php structure with latest git changes
+- CSS: Fixed styles for progress dialog when invoked from non-admin area
+
+version 2.7.2
+- CSS: Restored visible state of rotation operations for photos
+- JS: To resolve issue with Opera OS, background image need to be set for #g-rootpage-link instead of roller object. Finalization JS for root page slideshow extended to clear background for overlay.
+- Reenabled support for site status messages
+
+version 2.7.1
+- Root Page layout/css extended to allow click on the image while slideshow is still loading
+- ADMIN: Some changes in setting's titles and help
+- Fixed issue with meta data overlay not being shown for some title/meta combinations
+
+version 2.7.0
+- DEV: new url parameter support added - colorpack. Ex: <gallery_url>?colorpack=<name> 
+- ADMIN: 2 to 5 columns layout is now supported. Flex column option moved into column selector. 
+- ADMIN: Added new mode for Description overlay in Album - Overlay Bottom (Static) - places description on the bottom of the thumb as static overlay. Metadata would not be shown. 
+- ADMIN: Metadata Display Mode for Thumbs introduced. [Hide metadata] merged into it. Metadata can now be merged with description. 
+- W3C: resolved some validation errors in album page 
+- CSS: !!! Colorpack !!! - adjusted to reflect changes to thumb description structure 
+- CSS: Changes for columns CSS (.g-column-3/.g-column-4) - moved to list level - several php files also affected 
+- CSS: Fixed issue with re-authenticate dialog layout 
+- CSS: Fixed issue search button in IE7 Compatibility mode for wind color pack 
+- ShadowBox module config settings changed to prevent flickering - enabled dialog animation. Slideshow timeout increased to 7 sec. Updated version of ShadowBox module is available. 
+- CSS: Deprecated styles for ShadowBox Ajax dialogs as they are not supported by the library in Core and color pack references 
+
+version 2.6.3
+- ADMIN: New "Title Display Mode" added - Overlay (Static)
+- CSS: syncronization between colorpacks. Some simplification
+
+version 2.6.2
+- Added support for initial background in the Root Page to be removed as soon as slideshow starts (requires imageblockex 2.1)
+- ADMIN: Added option allowing feed selection for Root Page, Quote text
+- Small changes in color pack and layout for Upload dialog
+- Fixed logic in roopage.html.php to properly construct the link for navigation
+
+version 2.6.0
+- Support for root page added
+- Added borders for main wrapper in Slate Blue color pack to accommodate centered layout
+- Added JS to preload next/prior images in photo pages
+- Added content wrapper for album grid to allow external CSS application - ex: center grid content
+- ALERT! Improved rendering of admin panel. This would break admin panels for any modules which uses the same file by inheritance. Please download updated module distros.
+- Fixed wrong reference to layout_non_ie.css file - not used
+- Removed restrictions for displaying sidebar in satellite pages
+- Fixed status message alignment in Upload dialog
+- Fixed W3C validation error in Photo page markup
+- "controllers" folder deprecated
+                                                 
+version 2.5.1
+- Fixed issue with relative path not being used when changing sidebar display mode
+- ADMIN: Added support for Blend effect for page transitions
+- ADMIN: Added check to identify module collision between FancyBox and ShadowBox
+- ADMIN: New option "Keep Thumb Nav Block on the side" for Photo Pages
+- CSS: small css changes for bottom aligned sidebar positioning
+- CSS: Fix for dialog overlay div to properly position itself and prevent scrollbars to appear without reason
+- CSS: slateblue color pack - make regular text grey
+- CSS: set min height for bottom aligned sidebar
+- CSS: Fixed issue with font size for dialogs in IE8 Compatability mode 
+- Custom layout for tag_block.html.php is depricated
+- Some W3C Validation clean-up
+
+version 2.5.0
+- New colorpack - SlateBlue
+- Added support for bottom aligned Sidebar
+- CSS: opacity in .ui-widget-overlay (forms.css) set to 70
+- CSS: Fixed issue with misallignment of sidebar toolbar area and page header info
+- CSS: Removed left pagging for g-photo element to properly align in the div
+- CSS: Added thumb size restrictions for Image Block module
+- Removed logic to use Shadowbox when showing Exif data
+
+version 2.4.9
+- ADMIN: Top Align Thumb Image option added - do not center thumb image in the view window. Useful for portrait oriented photos.
+- ADMIN: Added a new Advanced option - Relative path to custom.css, if used - allowing inclusion of custom css override
+- Ignore albums when building item list for Fancybox/Shadowbox Slideshow in Photo page. Fix issue with extra item added when start with first item.
+- Fixed issue with not properly sanitized titles for links for Fancybox/Shadowbox Slideshow in Photo page
+- Small adjustment to FancyBox slideshow navigation arrows
+- Force min height requirement for H1/H2 elements
+- Fixed spelling for g-thumlink -> g-thumblink
+- Force size of the thumb link to fill crop area - situation when thumb image is smaller then view area
+- Removed custom layout for User Profile page
+
+version 2.4.8
+- Fixed inverted state of "Disallow Search Engine Indexing (No Bots)
+- Fixed JS syntax incompatibility in IE7/IE8 compatibility mode
+- Fixed display of thumb title and photo description on hover in IE7/IE8 compatibility mode
+- Fixed issue with Dialogs not skinned properly in Carbon/Wind themes
+- Fixed issue with metadata for photo thumbs when Aspect Ratio: Actual Size and Title Display Mode: Bottom
+
+version 2.4.7
+- Fixed issue with some .g-block structures.
+  Fixed issue with avatar not properly aligned in comment section.
+
+version 2.4.6
+- Fixed some issues when strict error reporting is enabled for PHP
+- Fixed background color for description for bottom Display Title Mode (greydragon colorpack)
+- Added support for two new Thumb Sizes - Digital Ex and Film Ex - 300px wide thumbs
+- Fixed issue with buttons in the block "jumping" out
+- Added check in block view to verify that theme is defined
+
+version 2.4.5
+- Min G3 core requirement is set to v.41
+- Fixed issue with Exif dialog data integration
+- Fixed issue with permission dialog
+- CSS: Changes form style management. Fixed issue with breadcrumbs display in dialogs.
+- CSS: Important! Colorpack files are affected
+- Removed no longer required custom Login dialog logic
+- JS cleanup
+
+version 2.4.4
+
+Please drop GD themes folder before uploading a new version
+
+- CSS: screen.css - fixed layout naming change preventing proper display of authentification form when accessing protected areas
+- CSS: Removed some temp files not required by the theme.
+- Support for Fancybox added as alternative to Shadowbox
+- Added support for CalendarView module
+
+version 2.4.3
+- Fixed issue with sidebar mode switch link being incorrect
+- CSS: small style adjustment to neutralize default style effect for the search entry box
+
+version 2.4.2
+- Fixed issue some modules requiring scrollTo() function.
+- Shadowbox is now optional. Special logic added to allow/disallow SB slideshow mode. If disabled, theme would not support full view for images to be in the popup window, new window will be used instead.
+- CSS: Minor improvements for thumb layout in Overlay and Bottom Title Display mode
+- ADMIN: Support for flex column layout added
+- ADMIN Help: Small improvements
+
+version 2.4.1
+- Organize module support reenabled
+- Register module support reenabled
+- Partial support for Shopping Basket module
+- CSS clean-up after dialog engine conversion - round #1
+- Fixed issue with Exif dialog not properly rendered
+
+version 2.4.0
+- Apply g-button style only to forms
+- Fix to properly display videos
+- Fix to account for changes in Comments module
+- Favicon removed from theme's package
+- Fixed uninitialized state warnings of the variables in PHP protected mode
+- Album thumbs now have "lighter" background
+- First draft to change how dialogs are handled - switched to standard code
+- ADMIN: G3 Core version requirement is set to 32
+- ADMIN: Added missing settings initializations
+- ADMIN: Fixed issue with Navigator position setting not being persisted
+- ADMIN: Abstract admin form styles for reuse from regular module admin panels
+- ADMIN: Added option to specify favicon location. If not specified default G3 icon is used.
+
+version 2.3.1
+- Hide Rotate operations for pictures since they are not supported by the theme
+- Added use of common gallery.ajax.js. Fix issue with some Ajax based links.
+- Layout fixes for Translation form overlay
+- Changed CSS styling for buttons to provide unified coverage for buttons and links exposed as buttons.
+- ADMIN: Fixed options group styles in Theme's Admin panel
+- ADMIN: Advanced Settings for Thumbs and Individual Photo are moved into separate sections.
+- ADMIN: New option - display meta data in Photo description section
+- ADMIN: New option/fix - SEO indexing is now allowed by default. In order to prevent your site from being indexed, you can now use "Disallow Search Engine Indexing" option
+
+version 2.3.0
+- Adopted for Gallery 3.0RC2 changes (minor template adjustments, css class name changes, etc.)
+
+version 2.2.1
+- Redesigned Ready event handler for the theme to ensure proper ShadowBox initialization
+- Added support for gallery_dialog() function call used by some 3rd party modules - some sync issues are solved by imposed delay of 1 second
+- GPS module - better action list alignment in the sidebar
+
+version 2.2.0
+- Added support for slideshow mode in Photo Preview
+- Fixed issue with Info side block - missing markup
+- Fixed issue with Upload dialog layout with some resolutions/fonts
+- ADMIN: Added option to hide breadcrumbs
+- ADMIN: Added prerequisite check for Info module - required for Thumb meta data display
+
+version 2.1.7
+- Added support for missing images in the thumbs to allow proper operations with empty albums or albums with broken thumbs
+- Some color optimizations
+- Color improvements for "Add Image" dialog
+- Better support for Basket module
+
+version 2.1.6
+- Wind colorpack adjusted to closer match default Wind theme
+
+version 2.1.5
+- Minor changes in ADMIN infrastructure
+- ADMIN: added check for Kbd Navigation module
+- ADMIN: New color pack - carbon
+
+version 2.1.4
+- Minor refactoring in paginator
+- Added support for keyboard navigation module (http://codex.gallery2.org/Gallery3:Modules:kbd_nav)
+
+version 2.1.3
+- Sidebar restricted to item related pages (album, photo, movie, etc)
+- Fixed issue with bottom border not applied to all instances of H1 tag
+- Min footer size set to 4em
+- ADMIN: "Photo: Description Display Mode" option added
+- ADMIN: Added new maintenance operation - "Reset Exif Info"
+
+version 2.1.2
+- Fixed issue with Album thumbs - empty space under
+- Thumb Item's Title Display Mode expanded to be applied to Item's description in Photo page
+- More documentations in CSS files, some movements
+- Some cleanup for Wind color pack
+- Fixed font name typo in screen.css
+- Fixed "Waiting" roller for Wind theme to match background
+- Added "up" button in navigation
+
+version 2.1.1
+- Increased size of Add photo dialog for better display on some lower resolutions.
+- ADMIN: New option: "Thumb: Item's Title Display Mode" - specifies how to display item's title in thumbs : Overlay Bottom Hide 
+
+version 2.1.0
+- Custom Info Block to include item's description
+- Image is centered when "Actual Size" aspect is used for thumbs
+- Added support for color packs - included: greydragon, wind
+- ADMIN: Improved error handling
+- ADMIN: Disable submit button on click to prevent Dbl-click
+- ADMIN: New option: Enable page cache - adds header marker for page to be cached for 60 seconds
+
+version 2.0.1
+- Enable BBCode/HTML support in individual photo descriptions
+- Fixed main menu overlay issue when in top position
+- Theme's credits moved into dedicated method
+- CSS clean up
+- Comments module layout enhancements
+
+version 2.0.0
+- Major redesign of the gallery flow.
+    - Added caption and metadata (Admin/optional) overlay for thumbs.
+    - Added description overlay in individual Photo view (look for "Learn More" marker).
+    - Based on Admin setting, thumbs are adjusted to fit Digital/Film/Actual size.
+- Attempt to fix issue with JS load latency to prevent unhandled AJAX calls
+- Added code protection for theme initialization procedure
+- ADMIN: Thumb Aspect Ratio option. See help section for more info.
+
+version 1.8.2
+- Increased based font size
+- Layout adjusted to match new settings
+- ADMIN: New option - Place Login Link in the Header 
+
+version 1.8.1
+- ADMIN: small adjustments in layout and help info
+- 3rd party module's related CSS moved into contrib.css
+- Adjust user profile screen to match new layout
+- initial design for calendar module
+
+version 1.8.0
+- ADMIN: Major redesign of the layout. Help section added.
+- ADMIN: New option - Show main menu for guest user
+- Minimum required Gallery version set to 30
+- When configured not to use sidebar, theme is switched into 4 columns layout
+
+version 1.7.6
+- Organize module: CSS improvements
+- Fixed issue with Chrome browser
+
+version 1.7.5
+- ADMIN: Added option to reset theme to default state
+- CSS: some size adjustments for dialogs. Added minimum height for overlay to keep dialogs from shrinking.
+
+version 1.7.4
+- ADMIN: Theme Gallery 3 core requirement changed to v.26
+- ADMIN: Most of theme's settings are documented using element's title attribute - hover over to see a description
+- Edit Permissions form redesigned and enlarged to fit more information
+
+version 1.7.3
+- ADMIN: Default states for the theme options are no longer being stored. Please save theme settings at least once to take advantage of a new functionality.
+- Photo Navigator default position is set to Top Only
+
+version 1.7.2
+- Fix in Uploader dialog to keep items inside respected boxes
+- Organize module support has been abandoned. Please use GWT Organize module instead. Added item in Prerequisites Checklist.
+
+version 1.7.1
+- CSS: Fixed visibility of the "Select Photo" button in "Add photo" dialog
+- CSS: Fixed "ghost" line for navigation buttons when zoomed-in in IE
+- Admin: fixed issue with prerequisite check not detecting deleted modules
+- <theme>/views/support folder deprecated. Logic moved into Theme_View extension class for Theme_View_Core
+- Theme Options Page management, generic Page code and BBCode processor moved into Theme_View class
+- HACK: Info block is not displayed if there is no description for the item
+
+version 1.6.4
+- Admin: Added "Show Sidebar for Albums only" option
+- Admin: added error visibility to the requirements validation list
+- Small CSS adjustments: Fixed footer min size issue when no site credit info is displayed; added space between Credits in the footer and Footer text area.
+- Few missing parts from last git sync
+
+version 1.6.3
+- Kohana 2.4 support
+- Support for Movie files view
+- Admin: Allow hide Sidebar Block header
+
+version 1.6.2
+- Admin: Page navigator option changed to use combobox
+- Admin: Added option to hide item description in albums
+
+version 1.6.2
+- Small CSS adjustments.
+- All operation dialogs should be visible now
+- Context menu: "Rotate 90..." items are removed due to an issue with image quality affected by the operation
+- Context menu: "Choose as the album cover" is now properly handled
+
+version 1.6.1
+- Admin: When allowed sidebar position is "Default Only", don't disregard selected Default position
+- Adjust item's toolbar buttons to align properly when side bar position is fixed
+- BBCode parser improved to support stripping of BBCode for Page title and breadcrumbs
+- Fixed issue with main menu missing class declaration not allowing open dialogs
+- Adjust context dialogs to properly show caption info
+- Caption added to Full size Preview
+- "New Comment" form styled
+- Admin: Option to align main menu to the top and Breadcrumbs to the left
+
+version 1.6.0
+- Admin: Fixed issue with "Rebuild thumbs" option in theme admin
+- Admin: Fixed issue with Item's toolbar not properly aligned in Quirks Mode
+- Exif data dialog Layout changes
+- Item context menu improvements:
+    - Fixed issue with submit logic
+    - Layout fixes for context menu dialogs 
+
+version 1.5.8
+- Admin: First release of the Theme admin option. After theme installation, visit Appearance/Theme
+  Options to configure the theme. If you had older version of the theme, initial setup is also required.
+  The following settings are available:
+    - Rows per album page - theme uses 3 columns layout for pictures, therefore default page_size is computed in x3 increments
+    - Thumb size is restricted to 200 and therefore not available for administration
+    - Mark to build resizes/thumbs - allows force rebuilding of images
+    - Show/Hide top/bottom photo navigators
+    - Specify allowed and default sidebar position
+    - Administrator can now specify Copyright message to display in the footer
+    - Site logo is now default to Gallery 3 logo, but admin can provide a path to custom logo.
+    - Admin module validates Theme's requirements (Shadowbox module need to be installed/active)
+- Sidebar session cookie is set to expire in 365 days
+
+version 1.5.7
+- Status message has been moved into header as popup to prevent obstruction of the main view.
+  jQuery is used to fade it out in 10 sec.
+- Improved logic for dialogs on submit
+- Theme related JS has been moved out of the page.html.php
+
+version 1.5.6
+- Fixed issue with tollbar buttons not properly aligned/shown when page is resized.
+- Copyright info moved into DB. To change default settings add [th_greydragon/copyright] into VARS table.
+
+version 1.5.5
+- CSS fixes.
+- Theme adjusted to be compatible with latest Git.
+- Login links are moved into footer.
+- Pagination module redesigned to support new structure of paging data.
+
+version 1.5.4
+- CSS fixes.
+- Added support for Comments block.
+- Improved support for Modal dialogs.
+
+version 1.5.3
+- Updated to match latest git.
+- Exif menu customization is now part of the theme.
+- Sidebar management button is disabled for current mode.
+
+version 1.5.2
+- Code, layout, css cleanup.
+- New thumbs for buttons.
+- First set of Ajax dialogs is ready and now operational: Login, user info, edit album, exit info.
+- Fixed some browser related issues.

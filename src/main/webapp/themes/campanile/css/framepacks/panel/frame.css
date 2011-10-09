@@ -1,0 +1,13 @@
+/**
+ * Gallery 3 Grey Dragon Theme
+ * Copyright (C) 2006-2010 Serguei Dosyukov
+ *
+ * CSS rules - Frames - Panel
+ */
+
+.g-album .g-thumbslide, .g-thumbslide { border-width: 1px; border-style: solid; }
+.g-thumbslide .g-description { margin: 0 0 0 1px; }
+.g-thumbslide .g-metadata    { margin: 0 0 4px 1px; }
+
+.g-default .g-thumbslide .g-description, .g-expanded .g-thumbslide .g-description, .g-thumbslide .g-metadata { border-color: #ADAEAD; }
+.ag-thumbcrop { border-width: 1px; border-style: solid; border-color: #ADAEAD; }
