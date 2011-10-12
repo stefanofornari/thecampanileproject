@@ -26,7 +26,7 @@ class dynamic_installer {
                                 "limit" => null,
                                 "description" => "",
                                 "key_field" => "view_count",
-                                "title" => t("Most viewed"))));
+                                "title" => t("Most popular"))));
       module::set_var(
         "dynamic", "updates",
         serialize((object)array("enabled" => false,

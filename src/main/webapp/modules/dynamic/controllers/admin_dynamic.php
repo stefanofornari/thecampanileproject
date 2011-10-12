@@ -62,7 +62,7 @@ class Admin_Dynamic_Controller extends Admin_Controller {
     $v = new Admin_View("admin.html");
     $v->content = new View("admin_dynamic.html");
     $v->content->form = empty($form) ? $this->_get_form() : $form;
-    $v->content->tabs = array("updates" => t("Recent changes"), "popular" => t("Most viewed"), "random" => t("Random"));
+    $v->content->tabs = array("updates" => t("Recent changes"), "popular" => t("Most popular"), "random" => t("Random"));
     $v->content->errors = $errors;
     return $v;
   }
