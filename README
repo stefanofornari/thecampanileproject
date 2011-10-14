@@ -1,1 +1,10 @@
 This is The Campanile Project
+
+To checkout from scratch:
+
+git clone https://stefanofornari@github.com/stefanofornari/thecampanileproject.git
+
+To deploy a specific version:
+
+git pull
+git checkout <tag>
