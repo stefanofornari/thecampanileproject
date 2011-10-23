@@ -111,7 +111,7 @@ table.calendar td.title a { font-weight: bold; }
 
 /* modules.css - Search ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-#g-quick-search-form { position: absolute; top: 3em; right: 1em; background: none transparent; }
+#g-quick-search-form { position: absolute; top: 0.5em; right: 1em; background: none transparent; }
 .viewmode-mini #g-quick-search-form { top: auto; right: auto; left: 1em; bottom: 2px; }
 #g-quick-search-form label { display: none; }
 #g-quick-search-form li { display: inline; float: left; padding: 0px; }
