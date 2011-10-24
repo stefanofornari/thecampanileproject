@@ -19,7 +19,7 @@ defined("SYSPATH") or die("No direct script access.");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<? $theme->load_sessioninfo(); ?>
+    <? $theme->load_sessioninfo(); ?>
     <!-- <?= $theme->themename ?> v.<?= $theme->themeversion ?> (ColorPack: <?= $theme->colorpack ?>) - Copyright (c) 2009-2011 Serguei Dosyukov - All Rights Reserved -->
 <html xmlns="http://www.w3.org/1999/xhtml" <?= $theme->html_attributes() ?> xml:lang="en" lang="en" <?= ($theme->is_rtl) ? "dir=rtl" : null; ?> >
     <?
@@ -49,31 +49,31 @@ defined("SYSPATH") or die("No direct script access.");
             <? endif ?>
         <? endif ?>
         <title><?= $_title ?></title>
-<? if ($theme->disable_seosupport): ?>
+        <? if ($theme->disable_seosupport): ?>
             <meta name="robots" content="noindex, nofollow, noarchive" />
             <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noodp, noimageindex, notranslate" />
             <meta name="slurp" content="noindex, nofollow, noarchive, nosnippet, noodp, noydir" />
             <meta name="msnbot" content="noindex, nofollow, noarchive, nosnippet, noodp" />
             <meta name="teoma" content="noindex, nofollow, noarchive" />
         <? endif; ?>
-<? if ($theme->blendpagetrans): ?>
+        <? if ($theme->blendpagetrans): ?>
             <meta http-equiv="Page-Enter" content="blendtrans(duration=0.5)" /> 
             <meta http-equiv="Page-Exit" content="blendtrans(duration=0.5)" />
-<? endif; ?>
+        <? endif; ?>
         <!-- Internet Explorer 9 Meta tags : Start -->
         <meta name="application-name" content="<?= $_title; ?>" />
         <meta name="msapplication-tooltip" content="<?= t("Start"); ?> <?= $_title; ?>" />
         <meta name="msapplication-starturl" content="<?= item::root()->url() ?>" />
-<? if ($theme->allow_root_page): ?>
+        <? if ($theme->allow_root_page): ?>
             <meta name="msapplication-task" content="name=<?= t("Gallery") ?>: <?= t("Root Page") ?>; action-uri=<?= item::root()->url(); ?>?root=yes; icon-uri=favicon.ico" />
             <meta name="msapplication-task" content="name=<?= t("Gallery") ?>: <?= t("Root Album") ?>; action-uri=<?= item::root()->url(); ?>?root=no; icon-uri=favicon.ico" />
         <? else: ?>
             <meta name="msapplication-task" content="name=<?= t("Gallery") ?>: <?= t("Root Album") ?>; action-uri=<?= item::root()->url(); ?>; icon-uri=favicon.ico" />
         <? endif; ?>
-<? if (identity::active_user()->admin): ?>
+        <? if (identity::active_user()->admin): ?>
             <meta name="msapplication-task-separator" content="gallery3-greydragon" />
             <meta name="msapplication-task" content="name=<?= t("Admin") ?>: <?= t("Dashboard") ?>; action-uri=<?= url::site("admin"); ?>; icon-uri=favicon.ico" />
-<? endif; ?>
+        <? endif; ?>
         <!-- Internet Explorer 9 Meta tags : End -->
 
         <link rel="shortcut icon" href="<?= $theme->favicon ?>" type="image/x-icon" />
@@ -85,7 +85,7 @@ defined("SYSPATH") or die("No direct script access.");
         <?= $theme->script("jquery.form.js") ?>
         <?= $theme->script("jquery-ui.js") ?>
         <?= $theme->script("gallery.common.js") ?>
-<? /* MSG_CANCEL is required by gallery.dialog.js */ ?>
+        <? /* MSG_CANCEL is required by gallery.dialog.js */ ?>
         <script type="text/javascript">
             var MSG_CANCEL = <?= t('Cancel')->for_js() ?>;
         </script>
@@ -105,7 +105,7 @@ defined("SYSPATH") or die("No direct script access.");
         <?= $theme->script("animation.js"); ?>
         <?= $theme->script("ui.support.js"); ?>
 
-<?= $theme->theme_css_inject(); ?>
+        <?= $theme->theme_css_inject(); ?>
 
         <!-- LOOKING FOR YOUR CSS? It's all been combined into the link below -->
         <?= $theme->get_combined("css"); ?>
@@ -116,14 +116,14 @@ defined("SYSPATH") or die("No direct script access.");
             <?= $theme->css_link($theme->custom_css_path, TRUE); ?>
         <? endif; ?>
         <!-- LOOKING FOR YOUR JAVASCRIPT? It's all been combined into the link below -->
-<?= $theme->get_combined("script") ?>
+        <?= $theme->get_combined("script") ?>
 
         <!--[if IE 6]>
           <link rel="stylesheet" href="<?= $theme->url("css/old_ie.css") ?>" type="text/css" media="screen,print,projection" />
         <![endif]-->
         <? if ($theme->thumb_inpage): ?>
             <style type="text/css"> #g-column-bottom #g-thumbnav-block, #g-column-top #g-thumbnav-block { display: none; } </style>
-    <? endif; ?>
+        <? endif; ?>
     </head>
     <?
     if ($theme->item()):
@@ -141,28 +141,28 @@ defined("SYSPATH") or die("No direct script access.");
     endif;
     ?>
     <body <?= $theme->body_attributes() ?><?= ($theme->show_root_page) ? ' id="g-rootpage"' : null; ?> <?= ($body_class) ? 'class="' . $body_class . '"' : null; ?>>
-<?= $theme->page_top() ?>
-            <?= $theme->site_status() ?>
-            <? if (((!$user->guest) or ($theme->show_guest_menu)) and ($theme->mainmenu_position == "bar")): ?>
+        <?= $theme->page_top() ?>
+        <?= $theme->site_status() ?>
+        <? if (((!$user->guest) or ($theme->show_guest_menu)) and ($theme->mainmenu_position == "bar")): ?>
             <style type="text/css">	html { margin-top: 30px !important; }	</style>
             <div id="g-site-menu" class="g-<?= $theme->mainmenu_position; ?>">
                 <?= $theme->site_menu($theme->item() ? "#g-item-id-{$theme->item()->id}" : "") ?>
             </div>
-            <? endif ?>
+        <? endif ?>
         <div id="g-header">
             <?= $theme->header_top() ?>
             <? if ($theme->viewmode != "mini"): ?>
-    <? if ($header_text = module::get_var("gallery", "header_text")): ?>
+                <? if ($header_text = module::get_var("gallery", "header_text")): ?>
                     <span id="g-header-text"><?= $theme->bb2html($header_text, 1) ?></span>
                 <? else: ?>
                     <a id="g-logo" href="<?= item::root()->url() ?><?= ($theme->allow_root_page) ? "?root=yes" : null; ?>" title="<?= t("go back to the Gallery home")->for_html_attr() ?>">
                         <img alt="<?= t("Campanile")->for_html_attr() ?>" src="<?= $theme->logopath ?>" />
                     </a>
-                    <? endif; ?>
                 <? endif; ?>
+            <? endif; ?>
             <? if (((!$user->guest) or ($theme->show_guest_menu)) and ($theme->mainmenu_position != "bar")): ?>
                 <div id="g-site-menu" class="g-<?= $theme->mainmenu_position; ?>">
-                <?= $theme->site_menu($theme->item() ? "#g-item-id-{$theme->item()->id}" : "") ?>
+                    <?= $theme->site_menu($theme->item() ? "#g-item-id-{$theme->item()->id}" : "") ?>
                 </div>
             <? endif ?>
 
@@ -175,19 +175,19 @@ defined("SYSPATH") or die("No direct script access.");
             <? if (empty($parents)): ?>
                 <?= $theme->breadcrumb_menu($theme, null); ?>
             <? else: ?>
-            <?= $theme->breadcrumb_menu($theme, $parents); ?>
-        <? endif; ?>
+                <?= $theme->breadcrumb_menu($theme, $parents); ?>
+            <? endif; ?>
             <?= $theme->custom_header(); ?>
         </div>
         <? if (($theme->page_subtype != "login") and ($theme->page_subtype != "reauthenticate") and ($theme->sidebarvisible == "top")): ?>
             <div id="g-column-top">
-    <?= new View("sidebar.html") ?>
+                <?= new View("sidebar.html") ?>
             </div>
-                <? endif; ?>
+        <? endif; ?>
         <div id="g-main">
             <div id="g-main-in">
-                    <? if (!$theme->show_root_page): ?>
-                        <?= $theme->sidebar_menu($item->url()) ?>
+                <? if (!$theme->show_root_page): ?>
+                    <?= $theme->sidebar_menu($item->url()) ?>
                     <div id="g-view-menu" class="g-buttonset<?= ($theme->sidebarallowed != "any") ? " g-buttonset-shift" : null; ?>">
                         <? if ($page_subtype == "album"): ?>
                             <?= $theme->album_menu() ?>
@@ -195,9 +195,9 @@ defined("SYSPATH") or die("No direct script access.");
                             <?= $theme->photo_menu() ?>
                         <? elseif ($page_subtype == "movie") : ?>
                             <?= $theme->movie_menu() ?>
-                    <? elseif ($page_subtype == "tag") : ?>
-                        <?= $theme->tag_menu() ?>
-                    <? endif ?>
+                        <? elseif ($page_subtype == "tag") : ?>
+                            <?= $theme->tag_menu() ?>
+                        <? endif ?>
                     </div>
                 <? endif; ?>
                 <?
@@ -261,11 +261,11 @@ defined("SYSPATH") or die("No direct script access.");
                 ?>
             </div> 
         </div>
-            <? if (($theme->page_subtype != "login") and ($theme->page_subtype != "reauthenticate") and ($theme->sidebarvisible == "bottom")): ?>
+        <? if (($theme->page_subtype != "login") and ($theme->page_subtype != "reauthenticate") and ($theme->sidebarvisible == "bottom")): ?>
             <div id="g-column-bottom">
                 <?= new View("sidebar.html") ?>
             </div>
-            <? endif; ?>
+        <? endif; ?>
         <div id="g-footer">
             <? if ($theme->viewmode != "mini"): ?>
                 <?= $theme->footer() ?>
@@ -274,14 +274,14 @@ defined("SYSPATH") or die("No direct script access.");
                 <? endif ?>
                 <ul id="g-footer-rightside"><li id="g-copyright"><?= $theme->copyright ?></li></ul>
                 <br/>
-            <?= $theme->credits() ?>
-                
-    <? if ($theme->loginmenu_position == "default"): ?>
-        <?= $theme->user_menu() ?>
-    <? endif; ?>
-<? endif; ?>
-<?= $theme->custom_footer(); ?>
+                <?= $theme->credits() ?>
+
+                <? if ($theme->loginmenu_position == "default"): ?>
+                    <?= $theme->user_menu() ?>
+                <? endif; ?>
+            <? endif; ?>
+            <?= $theme->custom_footer(); ?>
         </div>
-<?= $theme->page_bottom() ?>
+        <?= $theme->page_bottom() ?>
     </body>
 </html>
