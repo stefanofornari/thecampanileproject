@@ -57,6 +57,9 @@ h5 { font-weight: bold; }
     vertical-align: top; 
     font: bold 2.0em Arial, Helvetica, Verdana, Sans-Serif; padding-left: 4px;
 }
+#g-logo .about {
+    vertical-align: top;
+}
 
 .g-breadcrumbs { position: absolute; background-color: transparent; }
 .g-breadcrumbs.g-default     { bottom: 4px; right: 14px; }
