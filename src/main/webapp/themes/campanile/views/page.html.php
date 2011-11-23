@@ -153,7 +153,14 @@ defined("SYSPATH") or die("No direct script access.");
             <?= $theme->header_top() ?>
             <? if ($theme->viewmode != "mini"): ?>
                 <? if ($header_text = module::get_var("gallery", "header_text")): ?>
-                    <span id="g-header-text"><?= $theme->bb2html($header_text, 1) ?></span>
+                    
+                    <? /**
+                    <a id="g-logo" href="../index.jsp" title="<?= t("go back to the Gallery home")->for_html_attr() ?>
+                    <span id="g-header-text"><?= $theme->bb2html($header_text, 1) ?>ciccio</span>
+                    </a>
+                    **/
+                    ?>
+            <span id="g-logo"><img src="/campanile/themes/campanile/images/logo.png"></img><span class="txt">The Campanile Project</span><span class="about"><a id="123" class="g-dialog-link " href="/campanile/content/<?=Gallery_I18n::instance()->locale()?>/about.html" title="<?=t("About")?>"> [ <?=t("About")?> ]</a></span></span>
                 <? else: ?>
                     <a id="g-logo" href="<?= item::root()->url() ?><?= ($theme->allow_root_page) ? "?root=yes" : null; ?>" title="<?= t("go back to the Gallery home")->for_html_attr() ?>">
                         <img alt="<?= t("Campanile")->for_html_attr() ?>" src="<?= $theme->logopath ?>" />
