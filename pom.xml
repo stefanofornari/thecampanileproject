@@ -4,7 +4,7 @@
 
     <groupId>ste.campanile</groupId>
     <artifactId>campanile</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>war</packaging>
 
     <name>The Campanile Project</name>
