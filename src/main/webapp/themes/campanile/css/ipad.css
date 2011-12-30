@@ -1,6 +1,0 @@
-/* iPad [portrait + landscape] */
-@media only screen and (min-device-width:768px) and (max-device-width:1024px)
-{
-	#cboxOverlay { height: 200%; width: 200%; }
-	.g-bar#g-site-menu { width: 200%; }
-}
