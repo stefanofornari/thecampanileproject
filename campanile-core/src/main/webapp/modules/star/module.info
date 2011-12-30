@@ -1,0 +1,7 @@
+name = "Star photos"
+description = "Allows to star photos"
+version = 1
+author_name = "Stefano Fornari"
+author_url = "https://github.com/stefanofornari"
+info_url = "https://github.com/stefanofornari/thecampanileproject/wiki"
+discuss_url = "https://github.com/stefanofornari/thecampanileproject/wiki"
