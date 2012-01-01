@@ -1,5 +1,3 @@
-package ste.campanile.star;
-
 /*
  * The Campanile Project
  * Copyright (C) 2012 Stefano Fornari
@@ -21,6 +19,9 @@ package ste.campanile.star;
  * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301 USA.
  */
+
+package ste.campanile.star;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
