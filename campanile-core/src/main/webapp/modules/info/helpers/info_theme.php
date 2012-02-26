@@ -1,4 +1,7 @@
 <?php defined("SYSPATH") or die("No direct script access.");
+
+require_once("java/Java.inc");
+
 /**
  * Gallery - a web based photo album viewer and editor
  * Copyright (C) 2000-2011 Bharat Mediratta
@@ -18,6 +21,20 @@
  * Foundation, Inc., 51 Franklin Street - Fifth Floor, Boston, MA  02110-1301, USA.
  */
 class info_theme_Core {
+    
+   
+  static function thumb_info($theme, $item) {
+      
+      $i = java_closure($item, null, array(new Java("ste.campanile.Item")));
+
+      $req = java_context()->getHttpServletRequest();
+      $req->setAttribute("item", $i);
+      $req->setAttribute("class", get_class($item->owner));
+
+      return java_virtual("/modules/info/stars.bsh", true);
+  }
+
+  /**
   static function thumb_info($theme, $item) {
     $view = new View('info_thumb_bottom.html');
     $view->set('stars', 3);
@@ -26,4 +43,6 @@ class info_theme_Core {
     
     return $view->render();
   }
+   * 
+   */
 }
