@@ -19,9 +19,11 @@ import static org.junit.Assert.*;
  * @author ste
  */
 public class PhotoTest {
-    static ItemTest itemTest = null;
+    private ItemTest itemTest = null;
+    private Photo    photo    = null;
     
-    public static final String OWNER_VALUE = "John Doe";
+    public static final String OWNER_VALUE  = "John Doe";
+    public static final int    RATING_VALUE = 3         ;
     
     public PhotoTest() {
     }
@@ -41,7 +43,9 @@ public class PhotoTest {
         itemTest.properties.put(
             ItemTest.OWNER_FIELD, 
             Proxy.newProxyInstance(getClass().getClassLoader(), new Class[] {User.class}, new HandlerMock())
-       );
+        );
+        
+        photo = new Photo(itemTest);
     }
     
     @After
@@ -65,9 +69,21 @@ public class PhotoTest {
     
     @Test
     public void testOwner() throws Exception {
-        Photo p = new Photo(itemTest);
+        assertEquals(OWNER_VALUE, photo.getOwner());
+    }
+    
+    @Test
+    public void testRating() throws Exception {
+        photo.setRating(RATING_VALUE);
         
-        assertEquals(OWNER_VALUE, p.getOwner());
+        assertEquals(RATING_VALUE, photo.getRating());
+    }
+    
+    @Test
+    public void testIsRated() throws Exception {
+        assertFalse(photo.isRated());
+        photo.setRating(RATING_VALUE);
+        assertTrue(photo.isRated());     
     }
     
     // --------------------------------------------------------- Private methods

@@ -15,12 +15,16 @@ import java.lang.reflect.Proxy;
 public class Photo {
     private final String METHOD_DISPLAY_NAME = "display_name";
     
+    public final int RATE_UNRATED = -1;
+    
     private Item item;
+    private int rating;
     
     // ------------------------------------------------------------ Constructors
     
     public Photo(Item item) {
         this.item = item;
+        this.rating = RATE_UNRATED;  // not rated
     }
     
     // ---------------------------------------------------------- Public methods
@@ -56,5 +60,27 @@ public class Photo {
      */
     public Item getItem() {
         return item;
+    }
+
+    /**
+     * @return the rating
+     */
+    public int getRating() {
+        return rating;
+    }
+
+    /**
+     * @param rating the rating to set
+     */
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+    
+    /**
+     * 
+     * @return true if the photo has been rated, false otherwise
+     */
+    public boolean isRated() {
+        return (rating != RATE_UNRATED);
     }
 }
