@@ -107,4 +107,14 @@ public class I18NTest {
         testIT.setLastModified(millis); 
         assertEquals(TEST_NOT_EXISTING_KEY, i18n.get(TEST_NOT_EXISTING_KEY));
     }
+    
+    /**
+     *  Re-read the language file if modified
+     */
+    public void testReload() throws Exception {
+        I18N i18n = new I18N(TEST_PATH, Locale.ITALY);
+        assertEquals(TEST_NOT_EXISTING_KEY, i18n.get(TEST_NOT_EXISTING_KEY));
+        addEntry();
+        assertFalse(TEST_NOT_EXISTING_KEY.equals(i18n.get(TEST_NOT_EXISTING_KEY)));
+    }
 }
