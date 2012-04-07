@@ -36,8 +36,16 @@ public class I18NTest {
     }
 
     @BeforeClass
-    public static void setUpClass() throws Exception {
-        
+    public static void setUpClass() throws Exception { 
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+  
+    }
+    
+    @Before
+    public void setUp() throws Exception {
         if (testIT.exists()) {
             testIT.delete();
         }
@@ -48,26 +56,25 @@ public class I18NTest {
         
         p.storeToXML(new FileOutputStream(testIT), "");
     }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
+    
+    @After
+    public void tearDown() throws Exception {
         testIT.delete();
     }
     
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-    
     private void addEntry() throws Exception {
+        FileInputStream fis = null;
+        FileOutputStream fos = null;
+        
         Properties p = new Properties();
         
-        p.loadFromXML(new FileInputStream(testIT));
+        p.loadFromXML(fis = new FileInputStream(testIT));
+        fis.close();
         p.put(TEST_NOT_EXISTING_KEY, "traduzione");
-        p.storeToXML(new FileOutputStream(testIT), "");
+        p.storeToXML(fos = new FileOutputStream(testIT), "");
+        fos.close(); fos.close();
+        Thread.sleep(500);
+        testIT.setLastModified(System.currentTimeMillis()); 
     }
 
     @Test
@@ -108,6 +115,7 @@ public class I18NTest {
         assertEquals(TEST_NOT_EXISTING_KEY, i18n.get(TEST_NOT_EXISTING_KEY));
     }
     
+    @Test
     /**
      *  Re-read the language file if modified
      */
