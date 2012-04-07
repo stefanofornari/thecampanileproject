@@ -4,9 +4,11 @@
  */
 package ste.i18n;
 
-import java.util.Properties;
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.Properties;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Locale;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -21,20 +23,35 @@ import static org.junit.Assert.*;
  */
 public class I18NTest {
     
-    public final static String TEST_EXISTING_KEY = "This key exists";
+    public final static String TEST_PATH             = "target/test";
+    public final static String TEST_NAME             = "messages";
+    public final static String TEST_EXISTING_KEY     = "This key exists";
     public final static String TEST_NOT_EXISTING_KEY = "This key does not exist";
-    public final static String TEST_TRANSLATION = "Questa chiave esiste";
+    public final static String TEST_TRANSLATION      = "Questa chiave esiste";
     
-    
+    public final static File   testIT
+        = new File(TEST_PATH + '/' + Locale.ITALY + '/' + TEST_NAME);
+   
     public I18NTest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+        
+        if (testIT.exists()) {
+            testIT.delete();
+        }
+        
+        testIT.getParentFile().mkdirs();
+        Properties p = new Properties();
+        p.put(TEST_EXISTING_KEY, TEST_TRANSLATION);
+        
+        p.storeToXML(new FileOutputStream(testIT), "");
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
+        testIT.delete();
     }
     
     @Before
@@ -44,11 +61,19 @@ public class I18NTest {
     @After
     public void tearDown() {
     }
+    
+    private void addEntry() throws Exception {
+        Properties p = new Properties();
+        
+        p.loadFromXML(new FileInputStream(testIT));
+        p.put(TEST_NOT_EXISTING_KEY, "traduzione");
+        p.storeToXML(new FileOutputStream(testIT), "");
+    }
 
     @Test
     public void testConstructorFail() throws Exception {
         try {
-            I18N i18n = new I18N("notexistingfile-en_US", Locale.getDefault());
+            I18N i18n = new I18N("notexistingfile", Locale.getDefault());
             fail("the file must exist");
         } catch (FileNotFoundException e) {
             //
@@ -59,14 +84,27 @@ public class I18NTest {
     
     @Test
     public void testConstructorOK() throws Exception {
-        new I18N("src/test/webapp/modules/amodule/test-en_US", Locale.getDefault());
+        new I18N(TEST_PATH, Locale.ITALY);
     }
     
     @Test
-    public void testTOK() throws Exception {
-        I18N i18n = new I18N("src/test/webapp/modules/amodule/test", Locale.ITALY);
+    public void testGet() throws Exception {
+        I18N i18n = new I18N(TEST_PATH, Locale.ITALY);
         
-        assertEquals(TEST_TRANSLATION, i18n.t(TEST_EXISTING_KEY));
-        assertEquals(TEST_NOT_EXISTING_KEY, i18n.t(TEST_NOT_EXISTING_KEY));
+        assertEquals(TEST_TRANSLATION, i18n.get(TEST_EXISTING_KEY));
+        assertEquals(TEST_NOT_EXISTING_KEY, i18n.get(TEST_NOT_EXISTING_KEY));
+    }
+    
+    @Test
+    /**
+     *  Read the language file only once
+     */
+    public void testNotReload() throws Exception {
+        long millis = testIT.lastModified();
+        I18N i18n = new I18N(TEST_PATH, Locale.ITALY);
+        assertEquals(TEST_NOT_EXISTING_KEY, i18n.get(TEST_NOT_EXISTING_KEY));
+        addEntry();
+        testIT.setLastModified(millis); 
+        assertEquals(TEST_NOT_EXISTING_KEY, i18n.get(TEST_NOT_EXISTING_KEY));
     }
 }
