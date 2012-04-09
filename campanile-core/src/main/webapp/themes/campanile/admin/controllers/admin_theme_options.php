@@ -22,7 +22,7 @@ class Admin_Theme_Options_Controller extends Admin_Controller {
   protected $min_gallery_ver = 46;
 
   private function load_theme_info() {
-    $file = THEMEPATH . "greydragon/theme.info";
+    $file = THEMEPATH . "campanile/theme.info";
     $theme_info = new ArrayObject(parse_ini_file($file), ArrayObject::ARRAY_AS_PROPS);
     return $theme_info;
   }
@@ -39,7 +39,7 @@ class Admin_Theme_Options_Controller extends Admin_Controller {
 
   private function get_packlist($type, $filename) {
     $packlist = array();
-    $packroot = THEMEPATH . 'greydragon/css/' . $type . '/';
+    $packroot = THEMEPATH . 'campanile/css/' . $type . '/';
 
     foreach (scandir($packroot) as $pack_name):
       if (file_exists($packroot . "$pack_name/" . $filename . ".css")):

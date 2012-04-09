@@ -19,7 +19,7 @@
 <style>
 #g-header                    { margin-bottom: 10px; }
 #gd-admin                    { position: relative; font-size: 0.9em; }
-#gd-admin legend             { width: 100.5%; padding: 0.4em 0.8em; margin-left: -1.1em; background: url(/themes/greydragon/images/blue-grad.png) #d5e6f2 repeat-x left top; border: #dfdfdf 1px solid; border-top-left-radius: 0.4em; border-top-right-radius: 0.4em; }
+#gd-admin legend             { width: 100.5%; padding: 0.4em 0.8em; margin-left: -1.1em; background: url(/themes/campanile/images/blue-grad.png) #d5e6f2 repeat-x left top; border: #dfdfdf 1px solid; border-top-left-radius: 0.4em; border-top-right-radius: 0.4em; }
 
 .g-admin-left                { float: left; width: 53%; }
 .g-admin-right               { float: left; width: 46%; margin-left: 1%; margin-top: 1em; }
@@ -43,9 +43,9 @@
 #g-content form ul li select { display: inline; float: left; margin-right: 0.8em; width: 50.6%; }
 #g-content form ul li input[type='text'] { width: 50%; }
 #g-content form ul li textarea { height: 6em; }
-#g-content form input[type="submit"] { border: #5b86ab 2px solid; padding: 0.3em; color: #fff; background: url(/themes/greydragon/images/button-grad-vs.png) #5580a6 repeat-x left top; }
+#g-content form input[type="submit"] { border: #5b86ab 2px solid; padding: 0.3em; color: #fff; background: url(/themes/campanile/images/button-grad-vs.png) #5580a6 repeat-x left top; }
 #g-content form input[type="submit"]:hover,
-input.ui-state-hover { background-image: url(/themes/greydragon/images/button-grad-active-vs.png); border-color: #2e5475; color: #eaf2fa !important; }
+input.ui-state-hover { background-image: url(/themes/campanile/images/button-grad-active-vs.png); border-color: #2e5475; color: #eaf2fa !important; }
 #g-content form #vercheck, #g-content form #shadowbox, #g-content form #organizecheck { display: none; }
 </style>
 

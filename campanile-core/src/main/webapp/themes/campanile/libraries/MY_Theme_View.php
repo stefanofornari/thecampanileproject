@@ -230,7 +230,7 @@ class Theme_View extends Theme_View_Core {
     endif;
 
     try {
-      $theme_info = new ArrayObject(parse_ini_file(THEMEPATH . "greydragon/theme.info"), ArrayObject::ARRAY_AS_PROPS);
+      $theme_info = new ArrayObject(parse_ini_file(THEMEPATH . "campanile/theme.info"), ArrayObject::ARRAY_AS_PROPS);
       $this->themename = $theme_info->name;
       $this->themeversion = $theme_info->version;
     } catch (Exception $e) {
@@ -499,7 +499,7 @@ class Theme_View extends Theme_View_Core {
       $thumb_content .= (stripos($_text, '<li>'))? $_text : null;
     endif;
 
-    $frame_template = THEMEPATH . "greydragon/css/framepacks/" . $this->framepack . "/frame.html";
+    $frame_template = THEMEPATH . "campanile/css/framepacks/" . $this->framepack . "/frame.html";
 //    $content .= '<!-- ' . $frame_template . '-->';
     
 //    $view = new View($frame_template);

@@ -20,7 +20,7 @@
   $view = new View("admin_include.html");
 
   $view->is_module = FALSE;
-  $view->name = "greydragon";
+  $view->name = "campanile";
   $view->form = $form;
   $view->help = $help;
   print $view;
