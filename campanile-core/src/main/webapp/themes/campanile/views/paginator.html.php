@@ -153,7 +153,7 @@
 ?>
 
 <ul class="g-paginator">
-  <li class="g-pagination"><?= $pagination_msg ?></li>   
+  <li class="g-pagination" id="g-pagination-message"><?= $pagination_msg ?></li>   
   <li class="g-navigation">
   <? if ($current_page > 1): ?>
     <a title="<?= t("first") ?>" id="g-navi-first" href="<?= $_pagelist[1] ?>"><span class="ui-icon ui-icon-first">&nbsp;</span></a>

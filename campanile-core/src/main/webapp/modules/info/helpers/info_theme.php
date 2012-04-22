@@ -22,7 +22,8 @@ require_once("java/Java.inc");
  */
 class info_theme_Core {
     
-   
+ 
+/*
   static function thumb_info($theme, $item) {
       
       $i = java_closure($item, null, array(new Java("ste.campanile.Item")));
@@ -30,7 +31,16 @@ class info_theme_Core {
       $req = java_context()->getHttpServletRequest();
       $req->setAttribute("item", $i);
       $req->setAttribute("class", get_class($item->owner));
-
+      
+      return java_virtual("/modules/info/stars.bsh", true);
+  }
+*/
+ 
+  static function page_top($theme) {
+    return "<script src=\"/campanile/lib/rating/js/jquery.rating.pack.js\" type=\"text/javascript\"></script>";
+  }
+  
+  static function photo_top($theme) {
       return java_virtual("/modules/info/stars.bsh", true);
   }
 

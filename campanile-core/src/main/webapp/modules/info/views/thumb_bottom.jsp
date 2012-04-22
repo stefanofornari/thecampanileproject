@@ -3,5 +3,5 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-owner: <%= request.getAttribute("owner") %>is photo: <%= request.getAttribute("is_photo") %>
+Hello!
 
