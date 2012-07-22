@@ -40,12 +40,12 @@ class info_theme_Core {
     if ($theme->item()) {
       $theme->css("rating/jquery.rating.css");
     }
-    //return "<script src=\"/campanile/lib/rating/jquery.rating.pack.js\" type=\"text/javascript\"></script>";
+
     return "";
   }
   
-  static function photo_top($theme) {
-      return java_virtual("/modules/info/stars.bsh", true);
+  static function resize_bottom($theme) {
+	return java_virtual("/modules/info/stars.bsh", true);
   }
 
   /**
@@ -66,8 +66,9 @@ class info_theme_Core {
    static function sidebar_bottom($theme) {
     return "sidebar_bottom";
   }
-   static function resize_bottom($theme) {
-	return "resize_bottom";	
+   
+  static function photo_top($theme) {
+      return java_virtual("/modules/info/stars.bsh", true);
   }
    
    static function album_bottom($theme) {
