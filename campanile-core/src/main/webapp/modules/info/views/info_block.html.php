@@ -1,5 +1,4 @@
 <?php defined("SYSPATH") or die("No direct script access.") ?>
-pippo<br>
 <ul class="g-metadata">
   <? foreach($metadata as $info): ?>
   <li>
