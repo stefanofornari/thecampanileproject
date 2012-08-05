@@ -10,4 +10,5 @@ robots.txt
 system
 var
 .htaccess
-!/lib/rating/
+lib/rating/
+
