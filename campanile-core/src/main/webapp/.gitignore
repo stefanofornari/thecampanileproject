@@ -11,4 +11,4 @@ system
 var
 .htaccess
 lib/rating/
-
+local.php
