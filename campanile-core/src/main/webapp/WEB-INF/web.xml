@@ -41,7 +41,7 @@
         <url-pattern>*.php</url-pattern>
     </servlet-mapping>
     
-<!-- \BeanShellServlet configuration -->
+<!-- /BeanShellServlet configuration -->
     <context-param>
         <description>Prefix for controllers</description>
         <param-name>controllers-prefix</param-name>
@@ -62,6 +62,16 @@
     </servlet-mapping>
 <!-- BeanShellServlet configuration/ -->
 
+<!-- /Cayenne context injection filter -->
+    <filter>
+        <filter-name>cayenne-context</filter-name>
+        <filter-class>ste.campanile.web.CayenneFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>cayenne-context</filter-name>
+        <url-pattern>*.bsh</url-pattern>
+    </filter-mapping>
+<!-- Cayenne context injection filter/ -->
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>

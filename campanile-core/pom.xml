@@ -33,6 +33,12 @@
             <version>4.8.2</version>
             <scope>test</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>org.apache.cayenne</groupId>
+            <artifactId>cayenne-server</artifactId>
+            <version>3.0.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -82,6 +88,31 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.cayenne.plugins</groupId>
+                <artifactId>maven-cayenne-modeler-plugin</artifactId>
+                <version>3.0.2</version>
+            </plugin>
+            <!--
+            <plugin>
+                <groupId>org.apache.cayenne.plugins</groupId>
+                <artifactId>maven-cayenne-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                <execution>
+      		    <id>cgen</id>
+      		    <configuration>
+      			<map>${project.build.sourceDirectory}/../resources/omrtestMap.map.xml</map>
+                        <destDir>${project.build.sourceDirectory}</destDir>
+                        <superPkg>ste.ormtest.auto</superPkg>
+      		    </configuration>
+      		    <goals>
+      			<goal>cgen</goal>
+      		    </goals>
+      		</execution>
+      	    </executions>
+            </plugin>
+            -->
         </plugins>
     </build>
 
