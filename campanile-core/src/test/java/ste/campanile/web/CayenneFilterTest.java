@@ -5,8 +5,10 @@
 package ste.campanile.web;
 
 
+import ste.campanile.web.mock.ServletContextMock;
+import ste.campanile.web.mock.FilterChainMock;
+import ste.campanile.web.mock.HttpServletRequestMock;
 import org.apache.cayenne.ObjectContext;
-import javax.servlet.ServletContext;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,7 +23,7 @@ import static org.junit.Assert.*;
 public class CayenneFilterTest {
     
     private CayenneFilter filter;
-    private ServletContext servletContext;
+    private ServletContextMock servletContext;
     
     public CayenneFilterTest() {
     }
@@ -37,7 +39,9 @@ public class CayenneFilterTest {
     @Before
     public void setUp() {
         filter = new CayenneFilter();
-        servletContext = new ServletContext();
+        servletContext = new ServletContextMock();
+        
+        servletContext.requestURI = "/test";
     }
     
     @After
@@ -54,7 +58,9 @@ public class CayenneFilterTest {
         
         assertNull(context);
         
-        filter.doFilter(null, null, null);
+        HttpServletRequestMock q = new HttpServletRequestMock(servletContext);
+        
+        filter.doFilter(q, null, new FilterChainMock());
         
         context = (ObjectContext)servletContext.getAttribute(CayenneFilter.ATTRIBUTE_CAYENNE_CONTEXT);
         

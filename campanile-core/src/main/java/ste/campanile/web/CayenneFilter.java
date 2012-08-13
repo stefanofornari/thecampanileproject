@@ -29,6 +29,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.cayenne.ObjectContext;
+import org.apache.cayenne.access.DataContext;
 
 
 /**
@@ -51,6 +53,11 @@ public final class CayenneFilter implements Filter {
                          ServletResponse response, 
                          FilterChain     next    ) throws IOException, ServletException {
         System.out.println("----This is the Cayenne filter!!! " + ((HttpServletRequest)request).getRequestURI());
+        
+        ObjectContext orm = DataContext.createDataContext();
+        
+        request.getServletContext().setAttribute(ATTRIBUTE_CAYENNE_CONTEXT, orm);
+        
         next.doFilter(request, response);
     }
 
