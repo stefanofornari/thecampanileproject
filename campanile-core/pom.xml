@@ -3,16 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ste.campanile</groupId>
-    <artifactId>campanile</artifactId>
+    <artifactId>campanile-core</artifactId>
     <version>1.0.2-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
-    <name>The Campanile Project</name>
-
-    <properties>
-        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <name>campanile-core</name>
 
     <dependencies>
         <dependency>
@@ -21,9 +16,9 @@
             <version>1.2</version>
         </dependency>
         <dependency>
-            <groupId>javax</groupId>
-            <artifactId>javaee-web-api</artifactId>
-            <version>6.0</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
             <scope>provided</scope>
         </dependency>
 
@@ -39,7 +34,6 @@
             <version>10.5.3.0_1</version>
             <scope>test</scope>
         </dependency>
-        
         <dependency>
             <groupId>org.apache.cayenne</groupId>
             <artifactId>cayenne-server</artifactId>
@@ -52,73 +46,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <compilerArguments>
-                        <endorseddirs>${endorsed.dir}</endorseddirs>
-                    </compilerArguments>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.1.1</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.1</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${endorsed.dir}</outputDirectory>
-                            <silent>true</silent>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>javax</groupId>
-                                    <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>6.0</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                </executions>
+                <version>3.10.1</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.cayenne.plugins</groupId>
                 <artifactId>maven-cayenne-modeler-plugin</artifactId>
                 <version>3.0.2</version>
             </plugin>
-            <!--
-            <plugin>
-                <groupId>org.apache.cayenne.plugins</groupId>
-                <artifactId>maven-cayenne-plugin</artifactId>
-                <version>3.0.2</version>
-                <executions>
-                <execution>
-      		    <id>cgen</id>
-      		    <configuration>
-      			<map>${project.build.sourceDirectory}/../resources/omrtestMap.map.xml</map>
-                        <destDir>${project.build.sourceDirectory}</destDir>
-                        <superPkg>ste.ormtest.auto</superPkg>
-      		    </configuration>
-      		    <goals>
-      			<goal>cgen</goal>
-      		    </goals>
-      		</execution>
-      	    </executions>
-            </plugin>
-            -->
         </plugins>
     </build>
 

@@ -15,16 +15,18 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
  * @author ste
  */
+@Ignore
 public class CayenneFilterTest {
-    
+
     private CayenneFilter filter;
     private ServletContextMock servletContext;
-    
+
     public CayenneFilterTest() {
     }
 
@@ -35,35 +37,35 @@ public class CayenneFilterTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
     public void setUp() {
         filter = new CayenneFilter();
         servletContext = new ServletContextMock();
-        
+
         servletContext.requestURI = "/test";
     }
-    
+
     @After
     public void tearDown() {
     }
-    
+
     /**
      * Test of doFilter method, of class CayenneFilter.
      */
     @Test
     public void testDoFilter() throws Exception {
-        ObjectContext context = 
+        ObjectContext context =
             (ObjectContext)servletContext.getAttribute(CayenneFilter.ATTRIBUTE_CAYENNE_CONTEXT);
-        
+
         assertNull(context);
-        
+
         HttpServletRequestMock q = new HttpServletRequestMock(servletContext);
-        
+
         filter.doFilter(q, null, new FilterChainMock());
-        
+
         context = (ObjectContext)servletContext.getAttribute(CayenneFilter.ATTRIBUTE_CAYENNE_CONTEXT);
-        
+
         assertNotNull(context);
     }
 

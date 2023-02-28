@@ -36,28 +36,30 @@ import org.apache.cayenne.access.DataContext;
 /**
  * This is a web filter used to make available to the bsh controllers the ORM
  * Cayenne context.
- * 
+ *
  * @author ste
  */
 public final class CayenneFilter implements Filter {
-    
+
     public static final String ATTRIBUTE_CAYENNE_CONTEXT = "cayenne.context";
 
+    private FilterConfig config;
+
     @Override
-    public void init(FilterConfig fc) throws ServletException {
-        
+    public void init(FilterConfig config) throws ServletException {
+        this.config = config;
     }
 
     @Override
-    public void doFilter(ServletRequest  request , 
-                         ServletResponse response, 
+    public void doFilter(ServletRequest  request ,
+                         ServletResponse response,
                          FilterChain     next    ) throws IOException, ServletException {
         System.out.println("----This is the Cayenne filter!!! " + ((HttpServletRequest)request).getRequestURI());
-        
+
         ObjectContext orm = DataContext.createDataContext();
-        
-        request.getServletContext().setAttribute(ATTRIBUTE_CAYENNE_CONTEXT, orm);
-        
+
+        config.getServletContext().setAttribute(ATTRIBUTE_CAYENNE_CONTEXT, orm);
+
         next.doFilter(request, response);
     }
 

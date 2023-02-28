@@ -4,7 +4,7 @@
 
     <groupId>ste.campanile</groupId>
     <artifactId>campanile</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>20230228</version>
     <packaging>pom</packaging>
 
     <name>The Campanile Project</name>
@@ -12,6 +12,8 @@
     <modules>
       <module>campanile-core</module>
       <module>campanile-star</module>
+      <module>php-java-bridge</module>
+      <module>gallery</module>
     </modules>
 
     <scm>

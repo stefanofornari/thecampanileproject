@@ -1,8 +1,0 @@
-import ste.campanile.Photo;
-
-request.setAttribute("rating", "5");
-
-//photo = new Photo(request.getAttribute("item"));
-//request.setAttribute("owner", photo.getOwner());
-
-view = "rate-photo.jsp";

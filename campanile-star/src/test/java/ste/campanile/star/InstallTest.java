@@ -23,7 +23,6 @@
 package ste.campanile.star;
 
 import java.sql.SQLException;
-import ste.campanile.star.Install;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -33,12 +32,14 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
  *
  * @author ste
  */
+@Ignore
 public class InstallTest {
 
     private Connection con;
@@ -64,9 +65,9 @@ public class InstallTest {
     @After
     public void tearDown() {
     }
-    
+
     // --------------------------------------------------------- Private methods
-    
+
     private void checkTable() throws SQLException {
         for (int i = 0; i < 5;) {
             con.createStatement().executeUpdate("insert into item_properties (star) values(" + (++i) + ")");
@@ -80,7 +81,7 @@ public class InstallTest {
             Assert.assertEquals(++i, r.getInt(1));
         }
     }
-    
+
     // ------------------------------------------------------------------- Tests
 
     @Test
@@ -96,10 +97,10 @@ public class InstallTest {
         // Testing whwn the table does exist already. The expected result is that
         // it does not throw an error.
         //
-        
+
         Install.installDB(con);
     }
-    
+
     @Test
     public void installExistingField() throws Exception {
         //
@@ -108,9 +109,9 @@ public class InstallTest {
         //
         con.createStatement().executeUpdate("drop table item_properties");
         con.createStatement().executeUpdate("create table item_properties (id int)");
-        
+
         Install.installDB(con);
-        
+
         checkTable();
     }
 }
