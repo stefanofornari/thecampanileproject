@@ -1,0 +1,83 @@
+##################################################
+# DO Community Playbooks: LAMP on Ubuntu 18.04
+##################################################
+---
+- hosts: all
+  become: true
+  vars_files:
+    - vars/default.yml
+
+  tasks:
+    - name: Ensure group "sam" exists
+      group:
+        name: sam
+        state: present
+    - name: Add user "sam"  
+      user:
+        name: sam
+        group: sam
+        shell: /sbin/nologin
+        create_home: yes
+        comment: "basic user"
+
+    - name: Install LAMP Packages
+      apt: name={{ item }} update_cache=yes state=latest
+      loop: [ 'apache2', 'php8.1', 'php-mysql', 'libapache2-mod-php' ]
+
+    - name: Create document root
+      file:
+        path: "/var/www/{{ http_host }}"
+        state: directory
+        owner: "{{ app_user }}"
+        mode: '0755'
+
+    - name: Set up Apache port
+      template:
+        src: "templates/ports.conf.j2"
+        dest: "/etc/apache2/ports.conf"
+      notify: Reload Apache
+
+    - name: Set up Apache virtualhost
+      template:
+        src: "templates/apache.conf.j2"
+        dest: "/etc/apache2/sites-available/{{ http_conf }}"
+      notify: Reload Apache
+
+    # PHP Configuration
+    - name: PHP Configuration
+      lineinfile:
+        dest: /etc/php/8.1/apache2/php.ini
+        line: "{{ item.to }}"
+        regexp: "{{ item.search }}"
+        state: present
+      with_items:
+      - { search: "^short_open_tag = ", to: "short_open_tag = On"}
+      - { search: "^upload_max_filesize = ", to: "upload_max_filesize = 20M"}
+      - { search: "^;date.timezone = ", to: "date.timezone = Europe/Rome"}
+
+    - name: Link to the Campanile site
+      file:
+        src: /opt/Campanile/src/main/webapp
+        dest: '/var/www/{{ http_host }}/campanile'
+        owner: '{{ app_user }}'
+        state: link
+
+    - name: Enable new site
+      shell: /usr/sbin/a2ensite {{ http_conf }}
+      notify: Reload Apache
+
+    - name: Disable default Apache site
+      shell: /usr/sbin/a2dissite 000-default.conf
+      when: disable_default
+      notify: Reload Apache
+
+  handlers:
+    - name: Reload Apache
+      service:
+        name: apache2
+        state: reloaded
+
+    - name: Restart Apache
+      service:
+        name: apache2
+        state: restarted
