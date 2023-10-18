@@ -1,3 +1,6 @@
+User {{ app_user }}
+Group {{ app_group }}
+
 <VirtualHost *:{{ http_port }}>
     ServerAdmin webmaster@localhost
     ServerName {{ http_host }}
@@ -5,7 +8,7 @@
     DocumentRoot /var/www/{{ http_host }}
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
-
+    
     <Directory /var/www/{{ http_host }}>
           Options -Indexes
     </Directory>

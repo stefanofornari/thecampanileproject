@@ -8,14 +8,14 @@
     - vars/default.yml
 
   tasks:
-    - name: Ensure group "sam" exists
+    - name: "Ensure group {{ app_group }} exists"
       group:
-        name: sam
+        name: "{{ app_group }}"
         state: present
-    - name: Add user "sam"  
+    - name: "Add user {{ app_user }}"
       user:
-        name: sam
-        group: sam
+        name: "{{ app_user }}"
+        group: "{{ app_group }}"
         shell: /sbin/nologin
         create_home: yes
         comment: "basic user"
@@ -26,9 +26,11 @@
 
     - name: Create document root
       file:
-        path: "/var/www/{{ http_host }}"
-        state: directory
+        src: /opt/Campanile/src/main/webapp
+        dest: '/var/www/{{ http_host }}'
+        state: link
         owner: "{{ app_user }}"
+        group: "{{ app_group }}"
         mode: '0755'
 
     - name: Set up Apache port
@@ -54,13 +56,6 @@
       - { search: "^short_open_tag = ", to: "short_open_tag = On"}
       - { search: "^upload_max_filesize = ", to: "upload_max_filesize = 20M"}
       - { search: "^;date.timezone = ", to: "date.timezone = Europe/Rome"}
-
-    - name: Link to the Campanile site
-      file:
-        src: /opt/Campanile/src/main/webapp
-        dest: '/var/www/{{ http_host }}/campanile'
-        owner: '{{ app_user }}'
-        state: link
 
     - name: Enable new site
       shell: /usr/sbin/a2ensite {{ http_conf }}

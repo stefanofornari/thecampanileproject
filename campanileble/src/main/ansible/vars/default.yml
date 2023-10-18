@@ -1,6 +1,7 @@
 ---
 #mysql_root_password: "mysql_root_password"
 app_user: "sam"
+app_group: "sam"
 http_host: "thecampanileproject.org"
 http_conf: "apache.conf"
 http_port: "8080"
